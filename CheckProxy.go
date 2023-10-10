@@ -98,6 +98,10 @@ func testProxy(proxyAddr string, trueIP string) (proxyTrue string, TrueIP string
 
 func CheckIpCN(location string) bool {
 	switch {
+	case strings.Contains(location, "香港"):
+		return false
+	case strings.Contains(location, "台湾"):
+		return false
 	case strings.Contains(location, "中国"):
 		return true
 	default:
