@@ -2,6 +2,7 @@ package main
 
 import (
 	"CheckProxy/glider"
+	"CheckProxy/pkg/DataCleaning"
 	"CheckProxy/pkg/sqlite"
 	"bufio"
 	"encoding/csv"
@@ -36,12 +37,25 @@ func GetFileName(FilePath string) (FileName string, FileSuffix string) {
 }
 
 func usage() {
-	fmt.Fprintf(os.Stderr, `代理检查器
+	banner := `
+
+   _____ _               _    _____                     
+  / ____| |             | |  |  __ \                    
+ | |    | |__   ___  ___| | _| |__) | __ _____  ___   _ 
+ | |    | '_ \ / _ \/ __| |/ /  ___/ '__/ _ \ \/ / | | |
+ | |____| | | |  __/ (__|   <| |   | | | (_) >  <| |_| |
+  \_____|_| |_|\___|\___|_|\_\_|   |_|  \___/_/\_\\__, |
+                                                   __/ |
+                                                  |___/ 
+  V0.1.0
+`
+	fmt.Printf(banner)
+	fmt.Fprintf(os.Stderr, `
 
 Options:
 `)
 	// 自定义参数的排序顺序
-	paramOrder := []string{"h", "dbFilePath", "proxyFilePath"}
+	paramOrder := []string{"h", "db", "txt"}
 
 	// 输出参数帮助信息，按照自定义的排序顺序
 	for _, param := range paramOrder {
@@ -124,6 +138,7 @@ func startCheck() {
 	if len(forward) == 0 {
 		log.Fatal("[-]未获得代理!")
 	}
+	forward = DataCleaning.RemoveDuplicationMap(forward)
 	fmt.Println("[*]开始检测代理可用性!")
 	fwdok := glider.Main(forward)
 	ExpCsv(FileName, fwdok)
