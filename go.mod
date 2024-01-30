@@ -25,5 +25,6 @@ require (
 	github.com/templexxx/xorsimd v0.4.2 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/u-root/uio v0.0.0-20230220225925-ffce2a382923 // indirect
+	golang.org/dl v0.0.0-20240124160345-4f507d34b830 // indirect
 	golang.org/x/net v0.20.0 // indirect
 )

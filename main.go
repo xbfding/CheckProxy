@@ -47,7 +47,7 @@ func usage() {
   \_____|_| |_|\___|\___|_|\_\_|   |_|  \___/_/\_\\__, |
                                                    __/ |
                                                   |___/ 
-  V0.1.0
+  V0.1.1
 `
 	fmt.Printf(banner)
 	fmt.Fprintf(os.Stderr, `

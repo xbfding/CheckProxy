@@ -35,7 +35,8 @@ func parseConfig(forwarder []string) *Config {
 	conf.Forwards = forwarder
 
 	conf.Strategy.Strategy = "rr"
-	conf.Strategy.Check = "https://forge.speedtest.cn/api/location/info"
+	conf.Strategy.Check = "https://myip.ipip.net/"
+	//conf.Strategy.Check = "https://forge.speedtest.cn/api/location/info"
 	conf.Strategy.CheckInterval = 60
 	conf.Strategy.CheckTimeout = 3
 	conf.Strategy.CheckTolerance = 100
